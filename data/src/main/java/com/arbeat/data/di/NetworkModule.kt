@@ -1,5 +1,7 @@
 package com.arbeat.data.di
 
+import com.arbeat.data.network.NetworkServiceImpl
+import com.arbeat.domain.network.NetworkService
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -23,5 +25,9 @@ val networkModule = module {
                 level = LogLevel.ALL
             }
         }
+    }
+
+    single<NetworkService> {
+        NetworkServiceImpl(get())
     }
 }

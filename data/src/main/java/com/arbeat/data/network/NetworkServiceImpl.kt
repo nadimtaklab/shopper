@@ -1,5 +1,6 @@
 package com.arbeat.data.network
 
+import com.arbeat.data.model.DataProductModel
 import com.arbeat.domain.model.Product
 import com.arbeat.domain.network.NetworkService
 import com.arbeat.domain.network.ResultWrapper
@@ -14,6 +15,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
 import io.ktor.http.Parameters
 import io.ktor.http.contentType
+import io.ktor.utils.io.InternalAPI
 import kotlinx.io.IOException
 
 class NetworkServiceImpl(val client: HttpClient) : NetworkService {
@@ -21,12 +23,13 @@ class NetworkServiceImpl(val client: HttpClient) : NetworkService {
         return makeWebRequest(
             url = "https://fakestoreapi.com/products",
             method = HttpMethod.Get,
-            mapper = { dataModels: List<Product> ->
-                dataModels
+            mapper = { dataModels: List<DataProductModel> ->
+                dataModels.map { it.toProduct() }
             }
         )
     }
 
+    @OptIn(InternalAPI::class)
     suspend inline fun <reified T, R> makeWebRequest(
         url: String,
         method: HttpMethod,
