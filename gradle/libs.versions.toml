@@ -12,6 +12,7 @@ appcompat = "1.6.1"
 material = "1.10.0"
 koin = "4.1.0-Beta5"
 ktor = "3.1.1"
+navigationCompose = "2.8.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +43,9 @@ ktor-client-cio = {group="io.ktor", name="ktor-client-cio", version.ref="ktor"}
 ktor-client-logging = {group="io.ktor", name="ktor-client-logging", version.ref="ktor"}
 ktor-client-content-negotiation = {group="io.ktor", name="ktor-client-content-negotiation", version.ref="ktor"}
 ktor-serialization-kotlinx-json = {group="io.ktor", name="ktor-serialization-kotlinx-json", version.ref="ktor"}
+
+#navigation compose
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
